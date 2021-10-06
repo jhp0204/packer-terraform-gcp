@@ -1,11 +1,14 @@
 source "amazon-ebs" "basic-example" {
   region        =  "us-east-1"
+  vpc_id        =  "vpc-d8ce66a5"
+  subnet_id     =  "subnet-80c3efcd" 
   source_ami    =  "ami-fce3c696"
   instance_type =  "t2.micro"
   associate_public_ip_address = true
   ssh_username  =  "ubuntu"
   ssh_interface =  "public_ip"
   ami_name      =  "packer_AWS_jhp0204_{{timestamp}}"
+  
   metadata_options {
     http_endpoint = "enabled"
     http_tokens = "required"
