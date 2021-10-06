@@ -36,6 +36,7 @@ resource "null_resource" "run_packer" {
 pwd
 ls
 ./packer version
+./packer build -var 'image_name=${var.image_name}-${local.timestamp}' -force -color=false .    
 EOH
   }
 }
