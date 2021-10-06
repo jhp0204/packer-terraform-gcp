@@ -21,11 +21,7 @@ build {
       "sleep 15",
       "sudo apt-get -y update",
       "sudo apt-get -y install apache2",
-      "sudo systemctl enable apache2",
-      "sudo systemctl start apache2",
-      "sudo chown -R ubuntu:ubuntu /var/www/html",
-      "chmod +x /tmp/files/*.sh",
-      "PLACEHOLDER=${var.placeholder} WIDTH=600 HEIGHT=800 PREFIX=gs /tmp/files/deploy_app.sh",
+      "pwd"
     ]
   }
 }
