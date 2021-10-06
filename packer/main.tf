@@ -1,27 +1,9 @@
 locals {
   timestamp = formatdate("YYYYMMDD-hhmmss",timeadd(timestamp(), "9h"))
-  credentials = var.credentials == "" ? file(var.credentials_file) : var.credentials
 }
 
-resource "null_resource" "gcloud_install" {
-  triggers = {
-    always_run = local.timestamp
-  }
-
-  provisioner "local-exec" {
-    command = <<EOH
-wget -O gcloud.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-337.0.0-linux-x86_64.tar.gz?hl=ko
-tar xvf gcloud.tar.gz
-mkdir -p /terraform/packer/.config/gcloud
-cat <<EOT >> /terraform/packer/.config/gcloud/application_default_credentials.json
-${local.credentials}
-EOT
-EOH
-  }
-}
 
 resource "null_resource" "packer_install" {
-  depends_on = [null_resource.gcloud_install]
   triggers = {
     always_run = local.timestamp
   }
@@ -53,9 +35,6 @@ resource "null_resource" "run_packer" {
     command = <<EOH
 pwd
 ls
-export GOOGLE_APPLICATION_CREDENTIALS=/terraform/packer/.config/gcloud/application_default_credentials.json
-export PATH=$${PATH}:/terraform/packer/google-cloud-sdk/bin/
-gcloud info
 ./packer version
 ./packer build -var 'image_name=${var.image_name}-${local.timestamp}' -force -color=false .
 EOH
