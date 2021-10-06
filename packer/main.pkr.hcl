@@ -3,6 +3,7 @@ source "amazon-ebs" "basic-example" {
   source_ami    =  "ami-fce3c696"
   instance_type =  "t2.micro"
   ssh_username  =  "ubuntu"
+  ssh_interface =  "public_ip"
   ami_name      =  "packer_AWS_jhp0204_{{timestamp}}"
   metadata_options {
     http_endpoint = "enabled"
