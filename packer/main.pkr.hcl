@@ -1,16 +1,19 @@
-source "googlecompute" "basic-example" {
-  project_id = var.project
-  source_image = var.base_image
-  ssh_username = "ubuntu"
-  zone = var.zone
-  disk_size = 10
-  disk_type = "pd-ssd"
-  image_name = var.image_name
+source "amazon-ebs" "basic-example" {
+  region        =  "us-east-1"
+  source_ami    =  "ami-fce3c696"
+  instance_type =  "t2.micro"
+  ssh_username  =  "ubuntu"
+  ami_name      =  "packer_AWS_jhp0204_{{timestamp}}"
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens = "required"
+    http_put_response_hop_limit = 1
+  }
 }
 
 build {
   name = "packer"
-  source "sources.googlecompute.basic-example" {
+  source "sources.amazon-ebs.basic-example" {
       name = "packer"
   }
 
