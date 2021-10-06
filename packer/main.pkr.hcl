@@ -1,15 +1,5 @@
-packer {
-  required_plugins {
-    amazon = {
-      version = ">= 0.0.2"
-      source  = "github.com/hashicorp/amazon"
-    }
-  }
-}
 source "amazon-ebs" "basic-example" {
   region        =  "us-east-1"
-  vpc_id        =  "vpc-d8ce66a5"
-  subnet_id     =  "subnet-80c3efcd" 
   source_ami    =  "ami-fce3c696"
   instance_type =  "t2.micro"
   associate_public_ip_address = true
