@@ -1,3 +1,3 @@
 variable "image_name" {
-  default = "AWS-JHP"
+  default = "aws-jhp"
 }
