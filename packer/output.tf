@@ -3,5 +3,5 @@ output "image_name" {
 }
 
 output "image_id" {
-    value = data.aws_ami.latest-packer.ami_id
+    value = data.aws_ami.latest-packer.aws_ami_id
 }
