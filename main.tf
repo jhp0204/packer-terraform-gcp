@@ -18,5 +18,5 @@ resource "aws_instance" "jenkins-demo" {
     Name  = "Packer-test"
   }
 
-  key_name  = "${var.key_name}"
+  key_name  = "jhp0204"
 }
