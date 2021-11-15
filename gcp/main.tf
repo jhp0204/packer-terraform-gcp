@@ -13,6 +13,7 @@ data "terraform_remote_state" "image_name" {
     }
   }
 }
+// Config의 마지막 tfstate 파일에 있는 정보를 사용하기 위한 연결 설정
 
 resource "google_compute_firewall" "default" {
   name    = "k8s-firewall"
@@ -52,6 +53,7 @@ resource "google_compute_instance" "instance" {
     initialize_params {
     //   image = var.image
       image = data.terraform_remote_state.image_name.outputs.image_name
+      // 앞선 연결에서 output > image_name metadata를 사용하도록 설정
     }
   }
 
