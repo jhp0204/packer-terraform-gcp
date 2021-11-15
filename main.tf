@@ -11,7 +11,7 @@ data "terraform_remote_state" "image_name" {
 
 resource "aws_instance" "jenkins-demo" {
   count         = "1"
-  ami           = data.terraform_remote_state.image_name.outputs.image_name
+  ami           = data.terraform_remote_state.image_name.outputs.image_id
   instance_type = "t2.micro"
 
   tags={
