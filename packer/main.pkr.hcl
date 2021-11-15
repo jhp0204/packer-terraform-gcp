@@ -1,5 +1,5 @@
 source "amazon-ebs" "basic-example" {
-  region        =  "us-east-1"
+  region        =  "us-east-2"
   source_ami    =  "ami-fce3c696"
   instance_type =  "t2.micro"
   associate_public_ip_address = true
