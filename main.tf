@@ -1,10 +1,9 @@
 data "terraform_remote_state" "image_name" {
-  backend = "remote"
-
-  config = {
+  backend "remote" {
     organization = "jhp0204"
-    workspaces = {
-      name = "PACKER-terraform-gcp"
+
+    workspaces {
+      name = "Integrate-Jenkins"
     }
   }
 }
