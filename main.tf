@@ -14,7 +14,7 @@ resource "aws_instance" "jenkins-demo" {
   ami           = data.terraform_remote_state.image_name.outputs.image_name
   instance_type = "t2.micro"
 
-  tags {
+  tags={
     Name  = "Packer-test"
   }
 
