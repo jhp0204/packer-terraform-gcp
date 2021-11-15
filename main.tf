@@ -1,9 +1,10 @@
 data "terraform_remote_state" "image_name" {
-  backend "remote" {
-    organization = "jhp0204"
+  backend = "remote"
 
-    workspaces {
-      name = "Integrate-Jenkins"
+  config = {
+    organization = "jhp0204"
+    workspaces = {
+      name = "PACKER-terraform-aws"
     }
   }
 }
