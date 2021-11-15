@@ -40,3 +40,18 @@ ls
 EOH
   }
 }
+
+data "aws_ami" "latest-packer" {
+most_recent = true
+owners = ["168607206513"] # jhp0204.park
+
+  filter {
+      name   = "name"
+      values = ["packer_AWS_jhp0204_-*"]
+  }
+
+  filter {
+      name   = "virtualization-type"
+      values = ["hvm"]
+  }
+}
